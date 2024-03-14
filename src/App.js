@@ -1,9 +1,8 @@
-import './App.css';
+import { MainPage } from "./api/pages/MainPage/MainPage";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-    </div>
+    <MainPage></MainPage>
   );
 }
 
