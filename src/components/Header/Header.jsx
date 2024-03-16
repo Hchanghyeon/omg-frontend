@@ -8,6 +8,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
+import { Link } from 'react-router-dom';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -27,7 +28,7 @@ export const Header = () => {
     return (
       <HeaderContainer>
           <LogoWrapper>
-              <Logo>Omg</Logo>
+              <Logo><Link to="/">Omg</Link></Logo>
           </LogoWrapper>
           <React.Fragment>
             <Chip label="정보" onClick={handleClickOpen} />

@@ -19,4 +19,9 @@ export const Logo = styled.div`
     color:#c86c1ccc;
     font-size: 26px;
     font-weight: bold;
+
+    a {
+        color:#c86c1ccc;
+        text-decoration: none;
+    }
 `
