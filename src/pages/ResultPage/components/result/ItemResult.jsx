@@ -17,19 +17,19 @@ export const ItemResult = ({ item, type }) => {
     return (
         <ItemResultContainer>
             {type === "cash" ? item.filter(itemInfo => itemInfo.itemName.includes("Cash"))
-                .map(itemInfo => {
+                .map((itemInfo, index) => {
                     return (
-                        <ItemBox>
-                            <ItemBoxTitle>{itemInfo.itemEquipmentSlotName}</ItemBoxTitle>
-                            <ItemBoxValue>{itemInfo.itemName}</ItemBoxValue>
+                        <ItemBox key={index + "cash"}>
+                            <ItemBoxTitle>{itemInfo.itemEquipmentSlotName ?? "데이터 없음"}</ItemBoxTitle>
+                            <ItemBoxValue>{itemInfo.itemName ?? "데이터 없음"}</ItemBoxValue>
                         </ItemBox>
                     )
                 }) : item.filter(itemInfo => !itemInfo.itemName.includes("Cash"))
-                .map(itemInfo => {
+                .map((itemInfo, index) => {
                     return (
-                        <ItemBox>
-                            <ItemBoxTitle>{itemInfo.itemEquipmentSlotName}</ItemBoxTitle>
-                            <ItemBoxValue>{itemInfo.itemName}</ItemBoxValue>
+                        <ItemBox key={index + "normal"}>
+                            <ItemBoxTitle>{itemInfo.itemEquipmentSlotName ?? "데이터 없음"}</ItemBoxTitle>
+                            <ItemBoxValue>{itemInfo.itemName ?? "데이터 없음"}</ItemBoxValue>
                         </ItemBox>
                     )
                 })}
