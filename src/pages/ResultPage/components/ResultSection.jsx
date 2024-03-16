@@ -28,8 +28,13 @@ export const ResultSection = ({ character }) => {
                 <StatResult stat={character.characterStat} />
             </CharacterContainer>
             <LoginLogoutDate>
-                <LoginDate>마지막 로그인 {formatDate(new Date(character.characterBasic.characterDateLastLogin))}</LoginDate>
-                <LogoutDate>마지막 로그아웃 {formatDate(new Date(character.characterBasic.characterDateLastLogout))}</LogoutDate>
+                <LoginDate>마지막 로그인 {
+                    character.characterBasic.characterDateLastLogin !== null ? formatDate(new Date(character.characterBasic.characterDateLastLogin)) : <>데이터 없음</>
+                }</LoginDate>
+                <LogoutDate>마지막 로그아웃 {
+                    character.characterBasic.characterDateLastLogout !== null ? formatDate(new Date(character.characterBasic.characterDateLastLogout)) : <>데이터 없음</>
+                }
+                </LogoutDate>
             </LoginLogoutDate>
             <ItemContainer>
                 <h2>캐릭터 장비 정보</h2>
