@@ -17,9 +17,11 @@ export const SearchConatiner = styled.div`
 `
 
 export const SectionHeader = styled.div`
-font-size:24px;
-font-weight: bold;
-margin-bottom: 15px;
-    
+    font-size:24px;
+    font-weight: bold;
+    margin-bottom: 15px;
 `
 
+export const SelectGameContainer = styled.div`
+    
+`
