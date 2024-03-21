@@ -7,6 +7,12 @@ export const ResultSectionContainer = styled.div`
     align-items: center;
     width:100%;
     height:100%;
+
+            @media only screen and (max-width: 600px){
+        h2 {
+            font-size:18px;
+        }
+    }
 `
 export const BasicHeader = styled.div`
     width:100%;
@@ -18,12 +24,18 @@ export const CharacterContainer = styled.div`
     justify-content: center;
     flex-wrap: wrap;
     padding-bottom:10px;
+    color:black;
+    background-color: white;
+    border-radius: 10px;
+    padding:10px;
+    box-sizing: border-box;
 
-
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 600px) {
         > div {
             margin-top:10px;
         }   
+
+        font-size: 13px;
     }
 `
 
@@ -40,6 +52,8 @@ export const ItemContainer = styled.div`
     border-bottom-color:silver;
     border-bottom-width: 1px;
     padding-bottom:10px;
+
+
 `
 
 export const StatHeader = styled.div`
@@ -62,18 +76,16 @@ export const LoginLogoutDate = styled.div`
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    border-bottom-style: solid;
-    border-bottom-color:silver;
-    border-bottom-width: 1px;
+    margin-top:10px;
     padding-bottom: 15px;
-    font-size:13px;
+    font-size:11px;
 `
 
 export const LoginDate = styled.div`
-    color:silver;
+    color:black;
 `
 export const LogoutDate = styled.div`
-    color:silver;
+    color:black;
 `
 
 export const Box = styled.div`
@@ -84,6 +96,7 @@ export const Box = styled.div`
 `
 
 export const BoxTitle = styled.div`
+color: #3f3bde;
     width:100px;
 `
 
@@ -95,15 +108,22 @@ export const BoxHeader = styled.div`
     font-size:20px;
     margin-bottom:7px;
     width:300px;
-    color:#c86c1ccc;
+
+    @media only screen and (max-width: 600px){
+        font-size:16px;
+    }
 `
 
 export const BoxHeaderCenter = styled.div`
     font-size:20px;
     margin-bottom:10px;
     width:300px;
-    color:#c86c1ccc;
     text-align: center;
+    color:black;
+
+            @media only screen and (max-width: 600px){
+        font-size:16px;
+    }
 `
 
 export const ItemBox = styled.div`
@@ -122,7 +142,7 @@ export const ItemBox = styled.div`
 `
 export const ItemBoxTitle = styled.div`
     font-size:12px;
-    color:silver;
+    color:#3f3bde;
 `
 
 export const ItemBoxValue = styled.div`
@@ -130,6 +150,9 @@ export const ItemBoxValue = styled.div`
 `
 
 export const ItemContainerWrapper = styled.div`
+    background-color: white;
+    padding:20px;
+    border-radius: 10px;
     display:flex;
     flex-direction: column;
     justify-content: center;

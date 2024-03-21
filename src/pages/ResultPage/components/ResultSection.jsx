@@ -26,8 +26,7 @@ export const ResultSection = ({ character }) => {
                 <ImageResult />
                 <BasicResult basic={character.characterBasic} />
                 <StatResult stat={character.characterStat} />
-            </CharacterContainer>
-            <LoginLogoutDate>
+                <LoginLogoutDate>
                 <LoginDate>마지막 로그인 {
                     character.characterBasic.characterDateLastLogin !== null ? formatDate(new Date(character.characterBasic.characterDateLastLogin)) : <>데이터 없음</>
                 }</LoginDate>
@@ -36,6 +35,7 @@ export const ResultSection = ({ character }) => {
                 }
                 </LogoutDate>
             </LoginLogoutDate>
+            </CharacterContainer>
             <ItemContainer>
                 <h2>캐릭터 장비 정보</h2>
                 <ItemContainerWrapper>

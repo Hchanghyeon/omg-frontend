@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { HeaderContainer, LogoWrapper, Logo } from 'src/components/Header/Header.style';
+import { HeaderContainer, LogoWrapper, Logo, LogoImage} from 'src/components/Header/Header.style';
 import { Chip } from '@mui/material';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -9,6 +9,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import { Link } from 'react-router-dom';
+import styled from '@emotion/styled';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -28,10 +29,10 @@ export const Header = () => {
     return (
       <HeaderContainer>
           <LogoWrapper>
-              <Logo><Link to="/">Omg</Link></Logo>
+              <Logo><Link to="/"><LogoImage src="/images/logo.png"/></Link></Logo>
           </LogoWrapper>
           <React.Fragment>
-            <Chip label="정보" onClick={handleClickOpen} />
+            <Chip label="정보" onClick={handleClickOpen} sx={{backgroundColor:'white', color:'#3f3bde'}} />
             <Dialog
                 open={open}
                 TransitionComponent={Transition}

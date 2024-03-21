@@ -5,6 +5,8 @@ export const FooterContainer = styled.div`
     height: 100%;
     display:flex;
     align-items: center;
+    margin-top:10px;
+    margin-bottom:10px;
     height: 60px;
     justify-content: center;
 `;
@@ -12,14 +14,17 @@ export const FooterContainer = styled.div`
 export const FooterText = styled.div`
     font-size:12px;
     font-weight: bold;
-    color:silver;
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
     a {
-        color: silver;
+        color: white;
         text-decoration: none;
+    }
+
+    @media only screen and (max-width: 600px){
+        font-size:10px;
     }
 `

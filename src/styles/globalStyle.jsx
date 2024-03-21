@@ -8,6 +8,8 @@ const style = css`
     }
 
     body {
+        background-color: #3f3bde;
+        color:white;
         margin: 0 auto;
         width:100%;
         max-width: 1024px;

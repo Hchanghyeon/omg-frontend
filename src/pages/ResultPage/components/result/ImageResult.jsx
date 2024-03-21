@@ -13,6 +13,7 @@ const ImageResultContainer = styled.div`
 
     img {
         width:100px;
+        border-radius: 5px;
     }
 
     > div {

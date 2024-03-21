@@ -7,7 +7,7 @@ export const HeaderContainer = styled.div`
     height: 100%;
     display:flex;
     align-items: center;
-    height: 60px;
+    height: 100px;
     justify-content: space-between;
 `;
 
@@ -16,12 +16,15 @@ export const LogoWrapper = styled.div`
 `
 
 export const Logo = styled.div`
-    color:#c86c1ccc;
     font-size: 26px;
     font-weight: bold;
 
     a {
-        color:#c86c1ccc;
         text-decoration: none;
     }
+`
+
+export const LogoImage = styled.img`
+    width:100px;
+    height:100px;
 `

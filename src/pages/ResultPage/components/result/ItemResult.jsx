@@ -11,6 +11,7 @@ const ItemResultContainer = styled.div`
     align-items: center;
     flex-wrap: wrap;
     margin-bottom:20px;
+    color:black;
 `
 
 export const ItemResult = ({ item, type }) => {

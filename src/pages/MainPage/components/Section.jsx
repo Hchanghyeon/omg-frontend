@@ -156,11 +156,21 @@ export const Section = () => {
                     </FormControl>
                 </SelectGameContainer>
                 {
+<<<<<<< Updated upstream
                     selectedGame.name === '메이플스토리M' ? <SearchConatiner>
+=======
+<<<<<<< Updated upstream
+                    selectedGame === '메이플스토리M' ? <SearchConatiner>
+>>>>>>> Stashed changes
                         <Box sx={{ minWidth: 120 }}>
+=======
+                    selectedGame.name === '메이플스토리M' ? <SearchConatiner>
+                        <Box sx={{ minWidth: 120 }} className="form-control">
+>>>>>>> Stashed changes
                             <FormControl fullWidth>
-                                <InputLabel id="demo-simple-select-label">월드명</InputLabel>
+                                <InputLabel className="table-cell" id="filled-basic">월드명</InputLabel>
                                 <Select
+                                    className="table-cell"
                                     labelId="demo-simple-select-label"
                                     id="demo-simple-select"
                                     value={characterWorldName}
@@ -171,9 +181,17 @@ export const Section = () => {
                                 </Select>
                             </FormControl>
                         </Box>
+<<<<<<< Updated upstream
                         <TextField id="outlined-basic" label="캐릭터명" variant="outlined" onChange={(e) => setCharacterName(e.target.value)} />
                         <SizeButton variant="contained" onClick={getCharacerData}>입력</SizeButton>
                     </SearchConatiner> : <></>
+<<<<<<< Updated upstream
+=======
+=======
+                        <TextField className="table-cell" required id="outlined-required" label="캐릭터명" onChange={(e) => setCharacterName(e.target.value)} />
+                        <SizeButton className="size-button"variant="contained" onClick={getCharacerData}>입력</SizeButton>
+                    </SearchConatiner> : <></>
+>>>>>>> Stashed changes
                 }{
                     selectedGame.name && isRankDataAvailable ?
                         <RankingContainer>
@@ -183,6 +201,7 @@ export const Section = () => {
                             <RankingSubHeader>
                                 {formatDateYearMonthDay(new Date())} 기준
                             </RankingSubHeader>
+<<<<<<< Updated upstream
                             <TableContainer component={Paper}>
                                 <Table sx={{ minWidth: 380 }} aria-label="simple table">
                                     <TableHead>
@@ -191,6 +210,16 @@ export const Section = () => {
                                             <StyledTableCell>월드명</StyledTableCell>
                                             <StyledTableCell>캐릭터명</StyledTableCell>
                                             <StyledTableCell>조회수</StyledTableCell>
+=======
+                            <CustomTableContainer className="table-container" component={Paper}>
+                                <Table sx={{ minWidth: 380 }} aria-label="simple table">
+                                    <TableHead>
+                                        <TableRow>
+                                            <StyledTableCell className="table-cell-table" align="center">순위</StyledTableCell>
+                                            <StyledTableCell className="table-cell-table" align="center">월드명</StyledTableCell>
+                                            <StyledTableCell className="table-cell-table" align="center">캐릭터명</StyledTableCell>
+                                            <StyledTableCell className="table-cell-table" align="center">조회수</StyledTableCell>
+>>>>>>> Stashed changes
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
@@ -199,6 +228,7 @@ export const Section = () => {
                                                 key={index}
                                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                             >
+<<<<<<< Updated upstream
                                                 <TableCell component="th" scope="row">
                                                     <b>{index + 1}</b>
                                                 </TableCell>
@@ -207,16 +237,34 @@ export const Section = () => {
                                                 </TableCell>
                                                 <TableCell >{r.characterName}</TableCell>
                                                 <TableCell ><b>{r.count}</b></TableCell>
+=======
+                                                <TableCell className="table-cell-table" align="center"component="th" scope="row">
+                                                    <b>{index + 1}</b>
+                                                </TableCell>
+                                                <TableCell className="table-cell-table" align="center" component="th" scope="row">
+                                                    {r.worldName}
+                                                </TableCell>
+                                                <TableCell className="table-cell-table" align="center">{r.characterName}</TableCell>
+                                                <TableCell className="table-cell-table" align="center"><b>{r.count}</b></TableCell>
+>>>>>>> Stashed changes
                                             </TableRow>
                                         ))}
                                     </TableBody>
                                 </Table>
+<<<<<<< Updated upstream
                             </TableContainer>
+=======
+                            </CustomTableContainer>
+>>>>>>> Stashed changes
                             <RankingRefreshTimer>
                                갱신까지 남은 시간 {timer}초
                             </RankingRefreshTimer>
                         </RankingContainer> : <></>
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
                 }
 
             </SectionContainer>
@@ -257,12 +305,31 @@ export const Section = () => {
     )
 }
 
+
 const SizeButton = styled(Button)({
-    backgroundColor: '#c86c1ccc',
+    backgroundColor: '#3f3bde',
     height: '55px',
+<<<<<<< Updated upstream
 })
 
 const StyledTableCell = styled(TableCell)({
     backgroundColor: '#c86c1ccc',
     color: 'white'
+=======
+<<<<<<< Updated upstream
+=======
+    color:'white'
+})
+
+const StyledTableCell = styled(TableCell)({
+    backgroundColor:"#3f3bde",
+    color: 'white'
+})
+
+const CustomTableContainer = styled(TableContainer)({
+    borderStyle:"solid",
+    borderColor:"white",
+    borderWidth:"1px"
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 })
