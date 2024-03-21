@@ -68,11 +68,7 @@ export const SectionHeader = styled.div`
 export const SelectGameContainer = styled.div`
     
 `
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
+
 
 export const RankingContainer = styled.div`
 
@@ -84,13 +80,11 @@ export const RankingHeader = styled.div`
     text-align: center;
     font-size:18px;
     font-weight: bold;
-<<<<<<< Updated upstream
-=======
+
 
     @media only screen and (max-width: 600px){
         font-size:15px;
     }
->>>>>>> Stashed changes
 `
 
 export const RankingSubHeader = styled.div`
@@ -98,14 +92,11 @@ export const RankingSubHeader = styled.div`
     margin-top:5px;
     margin-bottom:5px;
     font-size:12px;
-<<<<<<< Updated upstream
-    color:silver;
-=======
+
     color:gray;
     @media only screen and (max-width: 600px){
         font-size:11px;
     }
->>>>>>> Stashed changes
 `
 
 export const RankingRefreshTimer = styled.div`
@@ -113,15 +104,9 @@ export const RankingRefreshTimer = styled.div`
     margin-top:10px;
     font-size:13px;
     font-weight: bold;
-<<<<<<< Updated upstream
-    color:silver;
-`
-=======
     color:gray;
 
     @media only screen and (max-width: 600px){
         font-size:11px;
     }
 `
->>>>>>> Stashed changes
->>>>>>> Stashed changes
