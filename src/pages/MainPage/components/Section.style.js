@@ -25,3 +25,31 @@ export const SectionHeader = styled.div`
 export const SelectGameContainer = styled.div`
     
 `
+
+export const RankingContainer = styled.div`
+
+`
+
+export const RankingHeader = styled.div`
+    margin-top:50px;
+    margin-bottom:10px;
+    text-align: center;
+    font-size:18px;
+    font-weight: bold;
+`
+
+export const RankingSubHeader = styled.div`
+    text-align: right;
+    margin-top:5px;
+    margin-bottom:5px;
+    font-size:12px;
+    color:silver;
+`
+
+export const RankingRefreshTimer = styled.div`
+    text-align: center;
+    margin-top:10px;
+    font-size:13px;
+    font-weight: bold;
+    color:silver;
+`

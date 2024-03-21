@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import * as React from 'react';
+import { getGameCharacterSearchRank } from "src/api/games/getGameCharacterSearchRank";
 import { getMapleStoryMCharacterInfo } from "src/api/games/getMapleStoryMCharacterInfo";
-import { SectionContainer, SearchConatiner, SectionHeader, SelectGameContainer } from "./Section.style";
+import { SectionContainer, SearchConatiner, SectionHeader, SelectGameContainer, RankingContainer, RankingHeader, RankingRefreshTimer, RankingSubHeader } from "./Section.style";
 import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
@@ -18,22 +19,39 @@ import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import { formatDateYearMonthDay } from "src/utils/DateChange";
 
 export const Section = () => {
+    const refreshRankDataSecond = 10;
     const worldNames = ['스카니아', '루나', '제니스', '크로아', '유니온', '엘리시움', '아케인'];
     const worldNameComponents = worldNames.map((value, index) => (<MenuItem key={index} value={value}>{value}</MenuItem>))
 
-    const gameNames = ['메이플스토리M', '카트라이더 러쉬플러스', 'V4', '히트2', '바람의 나라 연'];
-    const gameNamesComponents = gameNames.map((value, index) => (<MenuItem key={index} value={value}>{value}</MenuItem>))
+    const gameNames = [
+        { name: '메이플스토리M', uri: "maplestorym" },
+        { name: '카트라이더 러쉬플러스', uri: 'kartrider' },
+        { name: 'V4', uri: 'V4' },
+        { name: '히트2', uri: 'hit2' },
+        { name: '바람의 나라 연', uri: 'kingdomwinds' }
+    ];
+    const gameNamesComponents = gameNames.map((value, index) => (<MenuItem key={index} value={value.name}>{value.name}</MenuItem>))
 
     const navigate = useNavigate();
 
     const [characterName, setCharacterName] = useState('');
     const [characterWorldName, setCharacterWorldName] = useState('');
-    const [gameName, setGameName] = useState('');
-    const [selectedGame, setSelectedGame] = useState('');
+    const [selectedGame, setSelectedGame] = useState({});
+    const [rank, setRank] = useState([]);
     const [open, setOpen] = useState(false);
+    const [timer, setTimer] = useState(refreshRankDataSecond);
     const [errorMessage, setErrorMessage] = useState('');
+    const [isRankDataAvailable, setIsRankDataAvailable] = useState(false); 
 
     const handleChange = (event) => {
         setCharacterWorldName(event.target.value);
@@ -47,18 +65,45 @@ export const Section = () => {
         }
 
         if (game !== '메이플스토리M') {
-            const error = {"code": "error", "message": "지원 준비중인 게임입니다."};
+            const error = { "code": "error", "message": "지원 준비중인 게임입니다." };
 
             handleClickOpen(error);
             return;
         }
 
-        setSelectedGame(game);
-        setGameName(game);
+        const selected = gameNames.filter(item => item.name === game);
+
+        setSelectedGame(selected[0]);
     };
 
+    useEffect(() => {
+        const fetchData = async () => {
+            const rankData = await getGameCharacterSearchRank(selectedGame.uri);
+            setRank(rankData);
+            setIsRankDataAvailable(rankData && rankData.length > 0);
+        };
 
-    const getData = async () => {
+        if (selectedGame.name) {
+            fetchData();
+            const interval = setInterval(() => {
+                fetchData();
+                setTimer(refreshRankDataSecond);
+            }, 10000);
+
+            const timerInterval = setInterval(() => {
+                setTimer(prevTimer => prevTimer - 1);
+            }, 1000);
+
+
+            return () => {
+                clearInterval(interval);
+                clearInterval(timerInterval);
+            }
+        }
+    }, [selectedGame]);
+
+
+    const getCharacerData = async () => {
         if (characterName === '' || characterWorldName === '') {
             alert("캐릭터명 또는 월드명을 입력해주세요")
             return;
@@ -102,7 +147,7 @@ export const Section = () => {
                         <Select
                             labelId="demo-simple-select-standard-label"
                             id="demo-simple-select-standard"
-                            value={gameName}
+                            value={selectedGame.name}
                             onChange={handleChangeGame}
                             label="게임명"
                         >
@@ -111,7 +156,7 @@ export const Section = () => {
                     </FormControl>
                 </SelectGameContainer>
                 {
-                    selectedGame === '메이플스토리M' ? <SearchConatiner>
+                    selectedGame.name === '메이플스토리M' ? <SearchConatiner>
                         <Box sx={{ minWidth: 120 }}>
                             <FormControl fullWidth>
                                 <InputLabel id="demo-simple-select-label">월드명</InputLabel>
@@ -127,9 +172,53 @@ export const Section = () => {
                             </FormControl>
                         </Box>
                         <TextField id="outlined-basic" label="캐릭터명" variant="outlined" onChange={(e) => setCharacterName(e.target.value)} />
-                        <SizeButton variant="contained" onClick={getData}>입력</SizeButton>
+                        <SizeButton variant="contained" onClick={getCharacerData}>입력</SizeButton>
                     </SearchConatiner> : <></>
+                }{
+                    selectedGame.name && isRankDataAvailable ?
+                        <RankingContainer>
+                            <RankingHeader>
+                                실시간 캐릭터 조회 일일 랭킹
+                            </RankingHeader>
+                            <RankingSubHeader>
+                                {formatDateYearMonthDay(new Date())} 기준
+                            </RankingSubHeader>
+                            <TableContainer component={Paper}>
+                                <Table sx={{ minWidth: 380 }} aria-label="simple table">
+                                    <TableHead>
+                                        <TableRow>
+                                            <StyledTableCell>순위</StyledTableCell>
+                                            <StyledTableCell>월드명</StyledTableCell>
+                                            <StyledTableCell>캐릭터명</StyledTableCell>
+                                            <StyledTableCell>조회수</StyledTableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        {rank.map((r, index) => (
+                                            <TableRow
+                                                key={index}
+                                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                            >
+                                                <TableCell component="th" scope="row">
+                                                    <b>{index + 1}</b>
+                                                </TableCell>
+                                                <TableCell component="th" scope="row">
+                                                    {r.worldName}
+                                                </TableCell>
+                                                <TableCell >{r.characterName}</TableCell>
+                                                <TableCell ><b>{r.count}</b></TableCell>
+                                            </TableRow>
+                                        ))}
+                                    </TableBody>
+                                </Table>
+                            </TableContainer>
+                            <RankingRefreshTimer>
+                               갱신까지 남은 시간 {timer}초
+                            </RankingRefreshTimer>
+                        </RankingContainer> : <></>
+
                 }
+
             </SectionContainer>
             <React.Fragment>
                 <Dialog
@@ -171,4 +260,9 @@ export const Section = () => {
 const SizeButton = styled(Button)({
     backgroundColor: '#c86c1ccc',
     height: '55px',
+})
+
+const StyledTableCell = styled(TableCell)({
+    backgroundColor: '#c86c1ccc',
+    color: 'white'
 })
