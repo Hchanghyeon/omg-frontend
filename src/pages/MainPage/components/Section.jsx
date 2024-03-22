@@ -105,7 +105,10 @@ export const Section = () => {
 
     const getCharacerData = async () => {
         if (characterName === '' || characterWorldName === '') {
-            alert("캐릭터명 또는 월드명을 입력해주세요")
+            const error = new Error();
+            error.message = "캐릭터명 또는 월드명을 입력해주세요";
+
+            handleClickOpen(error);
             return;
         }
 
@@ -172,8 +175,12 @@ export const Section = () => {
                                 </Select>
                             </FormControl>
                         </Box>
-                        <TextField className="table-cell" required id="outlined-required" label="캐릭터명" onChange={(e) => setCharacterName(e.target.value)} />
-                        <SizeButton className="size-button"variant="contained" onClick={getCharacerData}>입력</SizeButton>
+                        <TextField className="table-cell" required id="outlined-required" label="캐릭터명" onChange={(e) => setCharacterName(e.target.value)} onKeyDown={(e) => {
+                            if(e.key === 'Enter'){
+                                getCharacerData();
+                            }
+                        }}/>
+                        <SizeButton className="size-button" variant="contained" onClick={getCharacerData}>입력</SizeButton>
                     </SearchConatiner> : <></>
                 }{
                     selectedGame.name && isRankDataAvailable ?

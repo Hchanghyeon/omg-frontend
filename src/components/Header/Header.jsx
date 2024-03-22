@@ -8,8 +8,6 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
-import { Link } from 'react-router-dom';
-import styled from '@emotion/styled';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -29,7 +27,7 @@ export const Header = () => {
     return (
       <HeaderContainer>
           <LogoWrapper>
-              <Logo><Link to="/"><LogoImage src="/images/logo.png"/></Link></Logo>
+              <Logo><a href="/"><LogoImage src="/images/logo.png"/></a></Logo>
           </LogoWrapper>
           <React.Fragment>
             <Chip label="정보" onClick={handleClickOpen} sx={{backgroundColor:'white', color:'#3f3bde'}} />
