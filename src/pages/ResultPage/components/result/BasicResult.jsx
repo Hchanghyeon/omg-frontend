@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "@emotion/styled";
-import { formatDate } from "src/utils/DateChange";
+import { formatDate } from "../../../../utils/DateChange";
 import { Box, BoxTitle, BoxValue, BoxHeader} from "../ResultSection.style";
 
 
