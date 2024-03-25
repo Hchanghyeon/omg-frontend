@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Button from "@mui/material/Button";
 
-export const SubmitButton = (handleButtonSubmit) => {
+export const SubmitButton = ({handleButtonSubmit}) => {
     return <CustomButton className="size-button" variant="contained" onClick={handleButtonSubmit}>입력</CustomButton>;
 }
 

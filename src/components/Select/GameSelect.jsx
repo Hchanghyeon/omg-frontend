@@ -4,8 +4,8 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-export const GameSelect = (menuData, selectValue, handleSelectOnChange) => {
-    const MenuItems = menuData.map((value, index) => (<MenuItem key={index} value={value}>{value}</MenuItem>))
+export const GameSelect = ({menuData, selectValue, handleSelectOnChange}) => {
+    const MenuItems = menuData.map((value, index) => (<MenuItem key={index} value={value.name}>{value.name}</MenuItem>))
     
     return (
         <FormControl variant="standard" sx={{ m: 2, minWidth: 120 }}>

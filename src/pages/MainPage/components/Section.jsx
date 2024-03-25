@@ -4,7 +4,6 @@ import { getGameCharacterSearchRank } from "src/api/games/getGameCharacterSearch
 import { getMapleStoryMCharacterInfo } from "src/api/games/getMapleStoryMCharacterInfo";
 import { SectionContainer, SearchConatiner, SectionHeader, SelectGameContainer } from "./Section.style";
 import { useNavigate } from 'react-router-dom';
-
 import { ErrorModal } from "src/components/Modal/ErrorModal";
 import { mapleStoryWorldNames } from "src/constants/mapleStory";
 import { gameInfo } from "src/constants/games";
@@ -40,6 +39,7 @@ export const Section = () => {
         if (game !== '메이플스토리M') {
             const error = { "code": "error", "message": "지원 준비중인 게임입니다." };
 
+            setSelectedGame(gameInfo[0]);
             handleErrorModalOpen(error);
             return;
         }
@@ -96,7 +96,7 @@ export const Section = () => {
         });
     }
 
-    // 월드명 Select 갱신 메서드
+    // 월드명 갱신 메서드
     const handleChange = (event) => {
         setCharacterWorldName(event.target.value);
     };
