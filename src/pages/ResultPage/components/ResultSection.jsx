@@ -12,7 +12,7 @@ import {
 } from "./ResultSection.style"
 import { BasicResult } from "./result/BasicResult";
 import { StatResult } from "./result/StatResult";
-import { formatDate } from "src/utils/DateChange";
+import { formatDate } from "../../../utils/DateChange";
 import { ImageResult } from "./result/ImageResult";
 import { ItemResult } from "./result/ItemResult";
 
