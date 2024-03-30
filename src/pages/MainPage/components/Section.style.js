@@ -48,7 +48,7 @@ export const SectionContainer = styled.div`
 
 `
 
-export const SearchConatiner = styled.div`
+export const SearchContainer = styled.div`
     display:flex;
     justify-content: center;
     align-items: center;
