@@ -2,15 +2,7 @@ import { useState, useEffect } from "react";
 import * as React from 'react';
 import { getGameCharacterSearchRank } from "src/api/games/getGameCharacterSearchRank";
 import { getMapleStoryMCharacterInfo } from "src/api/games/getMapleStoryMCharacterInfo";
-<<<<<<< Updated upstream
-import { SectionContainer, SearchConatiner, SectionHeader, SelectGameContainer } from "./Section.style";
-=======
-<<<<<<< Updated upstream
-import { SectionContainer, SearchConatiner, SectionHeader, SelectGameContainer, RankingContainer, RankingHeader, RankingRefreshTimer, RankingSubHeader } from "./Section.style";
-=======
 import { SectionContainer, SearchContainer, SectionHeader, SelectGameContainer } from "./Section.style";
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 import { useNavigate } from 'react-router-dom';
 import { ErrorModal } from "src/components/Modal/ErrorModal";
 import { mapleStoryWorldNames } from "src/constants/mapleStory";
@@ -133,13 +125,7 @@ export const Section = () => {
                         handleSelectOnChange={handleChangeGame}
                     />
                 </SelectGameContainer>
-<<<<<<< Updated upstream
-                <SearchConatiner>
-=======
-<<<<<<< Updated upstream
-=======
                 <SearchContainer>
->>>>>>> Stashed changes
                     {
                         selectedGame.name === '메이플스토리M' ?
                             <>
@@ -155,12 +141,7 @@ export const Section = () => {
                                 <SubmitButton handleButtonSubmit={getCharacterData} />
                             </> : <></>
                     }
-<<<<<<< Updated upstream
-                </SearchConatiner>
-=======
                 </SearchContainer>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
                 {
                     selectedGame.name && isRankDataAvailable && <RankingTable rank={rank} timer={timer} />
                 }
