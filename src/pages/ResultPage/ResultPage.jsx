@@ -7,12 +7,12 @@ import { ResultSection } from "./components/ResultSection";
 
 export const ResultPage = () => {
     const location = useLocation();
-    const data = location.state;
+    const gameData = location.state;
 
     return (
         <ResultPageContainer>
             <Header/>
-            <ResultSection character={data}/>
+            <ResultSection character={gameData.result}/>
             <Footer/>
         </ResultPageContainer>
     )

@@ -19,7 +19,7 @@ export const Section = () => {
 
     const [characterName, setCharacterName] = useState('');
     const [characterWorldName, setCharacterWorldName] = useState('');
-    const [selectedGame, setSelectedGame] = useState(gameInfo[0]);
+    const [selectedGame, setSelectedGame] = useState({name:"", uri:""});
     const [rank, setRank] = useState([]);
     const [timer, setTimer] = useState(10);
     const [isRankDataAvailable, setIsRankDataAvailable] = useState(false);
@@ -80,15 +80,20 @@ export const Section = () => {
             return;
         }
 
-        let data = {};
+        const gameData = {
+            result: {},
+            selectedGame    
+        };
+        
         try {
-            data = await getMapleStoryMCharacterInfo(characterName, characterWorldName);
+            gameData.result = await getMapleStoryMCharacterInfo(characterName, characterWorldName);
         } catch (error) {
             handleErrorModalOpen(error.response.data);
             return;
         }
+
         navigate('/result', {
-            state: data
+            state: gameData
         });
     }
 
