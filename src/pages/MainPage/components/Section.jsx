@@ -32,7 +32,7 @@ export const Section = () => {
     const handleChangeGame = (event) => {
         const game = event.target.value;
 
-        if (game !== gameInfo[0].name) {
+        if (game !== gameInfo[0].name || game !== gameInfo[1].name) {
             const error = { "code": "error", "message": "지원 준비중인 게임입니다." };
 
             setSelectedGame(gameInfo[0]);
